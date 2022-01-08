@@ -42,7 +42,7 @@ jobs:
       - name: Unit test
         run: |
           go mod tidy
-          go test -v -race -coverprofile=coverage -covermode=atomic ./...
+          go test -v -coverprofile=coverage -covermode=atomic ./...
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2

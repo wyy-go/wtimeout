@@ -16,9 +16,9 @@ const (
 // New wraps a handler and aborts the process of the handler if the timeout is reached
 func New(opts ...Option) gin.HandlerFunc {
 	options := Options{
-		timeout:  defaultTimeout,
+		timeout:       defaultTimeout,
 		callBack:      nil,
-		customMsg:    `{"code": -1, "msg":"http: Handler timeout"}`,
+		customMsg:     `{"code": -1, "msg":"http: Handler timeout"}`,
 		errorHttpCode: http.StatusServiceUnavailable,
 	}
 
@@ -29,7 +29,7 @@ func New(opts ...Option) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
 
-		cp := *c  //nolint: govet
+		cp := *c //nolint: govet
 		c.Abort()
 		c.Keys = nil
 
@@ -74,7 +74,7 @@ func New(opts ...Option) gin.HandlerFunc {
 			}
 
 			if !tw.wroteHeaders {
-				tw.code= http.StatusOK
+				tw.code = http.StatusOK
 			}
 
 			tw.ResponseWriter.WriteHeader(tw.code)
@@ -90,7 +90,7 @@ func New(opts ...Option) gin.HandlerFunc {
 
 			tw.Timeout()
 			tw.ResponseWriter.WriteHeader(options.errorHttpCode)
-			if _, err := tw.ResponseWriter.WriteString(options.customMsg);err != nil {
+			if _, err := tw.ResponseWriter.WriteString(options.customMsg); err != nil {
 				panic(err)
 			}
 

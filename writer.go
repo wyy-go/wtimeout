@@ -37,7 +37,6 @@ func (tw *TimeoutWriter) Write(data []byte) (int, error) {
 	tw.mu.Lock()
 	defer tw.mu.Unlock()
 
-
 	return tw.body.Write(data)
 }
 

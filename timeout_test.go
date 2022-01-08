@@ -29,7 +29,7 @@ func TestTimeout(t *testing.T) {
 
 func TestCallback(t *testing.T) {
 	r := gin.New()
-	r.Use(New(WithTimeout(100 * time.Microsecond),WithCallBack(func(request *http.Request) {
+	r.Use(New(WithTimeout(100*time.Microsecond), WithCallBack(func(request *http.Request) {
 		t.Log("=========callback=========")
 	})))
 	r.GET("/", emptySuccessResponse)
@@ -41,10 +41,9 @@ func TestCallback(t *testing.T) {
 	assert.Equal(t, http.StatusServiceUnavailable, w.Code)
 }
 
-
 func TestCustomResponse(t *testing.T) {
 	r := gin.New()
-	r.Use(New(WithTimeout(1 * time.Second),WithCustomMsg("custom response")))
+	r.Use(New(WithTimeout(1*time.Second), WithCustomMsg("custom response")))
 
 	r.GET("/", emptySuccessResponse)
 
@@ -58,7 +57,7 @@ func TestCustomResponse(t *testing.T) {
 
 func TestHttpCode(t *testing.T) {
 	r := gin.New()
-	r.Use(New(WithTimeout(100 * time.Microsecond),WithErrorHttpCode(http.StatusRequestTimeout)))
+	r.Use(New(WithTimeout(100*time.Microsecond), WithErrorHttpCode(http.StatusRequestTimeout)))
 	r.GET("/", emptySuccessResponse)
 
 	w := httptest.NewRecorder()

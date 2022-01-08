@@ -12,10 +12,10 @@ type CallBackFunc func(*http.Request)
 
 // Options struct
 type Options struct {
-	timeout  time.Duration
-	callBack CallBackFunc
+	timeout       time.Duration
+	callBack      CallBackFunc
 	errorHttpCode int
-	customMsg string
+	customMsg     string
 }
 
 // WithTimeout set timeout
@@ -42,4 +42,3 @@ func WithCallBack(f CallBackFunc) Option {
 		t.callBack = f
 	}
 }
-

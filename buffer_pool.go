@@ -18,7 +18,7 @@ type bufferPool struct {
 func (p *bufferPool) GetBuff() *bytes.Buffer {
 	buf := p.pool.Get()
 	if buf == nil {
-		bs := make([]byte,0,buffSize)
+		bs := make([]byte, 0, buffSize)
 		return bytes.NewBuffer(bs)
 	}
 	return buf.(*bytes.Buffer)

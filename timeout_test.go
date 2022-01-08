@@ -43,7 +43,7 @@ func TestCallback(t *testing.T) {
 
 func TestCustomResponse(t *testing.T) {
 	r := gin.New()
-	r.Use(New(WithTimeout(2*time.Second), WithCustomMsg("custom response")))
+	r.Use(New(WithTimeout(100*time.Microsecond), WithCustomMsg("custom response")))
 
 	r.GET("/", emptySuccessResponse)
 
